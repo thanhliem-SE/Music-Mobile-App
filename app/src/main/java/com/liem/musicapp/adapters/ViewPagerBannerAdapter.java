@@ -20,11 +20,11 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class BannerViewPagerAdapter extends PagerAdapter {
+public class ViewPagerBannerAdapter extends PagerAdapter {
     private Context mContext;
     private ArrayList<QuangCao> mListQuangCao;
 
-    public BannerViewPagerAdapter(Context mContext, ArrayList<QuangCao> mListQuangCao) {
+    public ViewPagerBannerAdapter(Context mContext, ArrayList<QuangCao> mListQuangCao) {
         this.mContext = mContext;
         this.mListQuangCao = mListQuangCao;
     }

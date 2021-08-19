@@ -2,7 +2,6 @@ package com.liem.musicapp.fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,10 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import com.liem.musicapp.R;
-import com.liem.musicapp.adapters.PlaylistRecyclerAdapter;
+import com.liem.musicapp.adapters.RecyclerAdapterPlaylist;
 import com.liem.musicapp.models.Playlist;
 import com.liem.musicapp.services.ApiService;
 import com.liem.musicapp.services.DataService;
@@ -30,7 +28,7 @@ import retrofit2.Response;
 public class PlaylistFragment extends Fragment {
     private View view;
     private RecyclerView recyclerView;
-    private PlaylistRecyclerAdapter playlistRecyclerAdapter;
+    private RecyclerAdapterPlaylist playlistRecyclerAdapter;
     private ArrayList<Playlist> playlists;
 
     public PlaylistFragment() {
@@ -57,7 +55,7 @@ public class PlaylistFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Playlist>> call, Response<List<Playlist>> response) {
                  playlists = (ArrayList<Playlist>) response.body();
-                 playlistRecyclerAdapter = new PlaylistRecyclerAdapter(getActivity(), playlists, recyclerView);
+                 playlistRecyclerAdapter = new RecyclerAdapterPlaylist(getActivity(), playlists, recyclerView);
                  recyclerView.setAdapter(playlistRecyclerAdapter);
                  recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }

@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.liem.musicapp.R;
-import com.liem.musicapp.adapters.BannerViewPagerAdapter;
+import com.liem.musicapp.adapters.ViewPagerBannerAdapter;
 import com.liem.musicapp.models.QuangCao;
 import com.liem.musicapp.services.ApiService;
 import com.liem.musicapp.services.DataService;
@@ -31,7 +31,7 @@ public class BannerFragment extends Fragment {
     private ViewPager mViewPager;
     private CircleIndicator mCircleIndicator;
 
-    private BannerViewPagerAdapter bannerAdapter;
+    private ViewPagerBannerAdapter bannerAdapter;
     private int currentItem = 0;
     private Runnable runnable;
 
@@ -60,7 +60,7 @@ public class BannerFragment extends Fragment {
             @Override
             public void onResponse(Call<List<QuangCao>> call, Response<List<QuangCao>> response) {
                 ArrayList<QuangCao> banners = (ArrayList<QuangCao>) response.body();
-                bannerAdapter = new BannerViewPagerAdapter(getActivity(), banners);
+                bannerAdapter = new ViewPagerBannerAdapter(getActivity(), banners);
                 mViewPager.setAdapter(bannerAdapter);
                 mCircleIndicator.setViewPager(mViewPager);
 

@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 import com.liem.musicapp.R;
-import com.liem.musicapp.adapters.MainViewPagerAdapter;
+import com.liem.musicapp.adapters.ViewPagerAdapterMain;
 import com.liem.musicapp.fragments.TimKiemFragment;
 import com.liem.musicapp.fragments.TranngChuFragment;
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void init() {
-        MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapterMain mainViewPagerAdapter = new ViewPagerAdapterMain(getSupportFragmentManager());
         mainViewPagerAdapter.addFragment(new TranngChuFragment(), "Trang chủ");
         mainViewPagerAdapter.addFragment(new TimKiemFragment(), "Tìm kiếm");
         viewPager.setAdapter(mainViewPagerAdapter);

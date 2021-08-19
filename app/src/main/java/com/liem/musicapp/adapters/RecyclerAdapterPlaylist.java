@@ -1,8 +1,6 @@
 package com.liem.musicapp.adapters;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.liem.musicapp.R;
-import com.liem.musicapp.fragments.PlaylistFragment;
 import com.liem.musicapp.models.Playlist;
 import com.squareup.picasso.Picasso;
 
@@ -23,15 +19,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class PlaylistRecyclerAdapter extends RecyclerView.Adapter<PlaylistRecyclerAdapter.ViewHolder> {
+public class RecyclerAdapterPlaylist extends RecyclerView.Adapter<RecyclerAdapterPlaylist.ViewHolder> {
 
     private Context context;
     private ArrayList<Playlist> playlists;
-    private int totalHeight = 0;
     private RecyclerView recyclerView;
 
 
-    public PlaylistRecyclerAdapter(Context context, ArrayList<Playlist> playlists, RecyclerView recyclerView) {
+    public RecyclerAdapterPlaylist(Context context, ArrayList<Playlist> playlists, RecyclerView recyclerView) {
         this.context = context;
         this.playlists = playlists;
         this.recyclerView = recyclerView;
@@ -40,24 +35,23 @@ public class PlaylistRecyclerAdapter extends RecyclerView.Adapter<PlaylistRecycl
     @NonNull
     @NotNull
     @Override
-    public PlaylistRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public RecyclerAdapterPlaylist.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_playlist, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull PlaylistRecyclerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull RecyclerAdapterPlaylist.ViewHolder holder, int position) {
         Playlist playlist = playlists.get(position);
         Picasso.get().load(playlist.getHinhNen()).into(holder.imgBackground);
         Picasso.get().load(playlist.getHinhIcon()).into(holder.imgIcon);
         holder.txtPlaylist.setText(playlist.getTen());
 
-        holder.layout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        int height = holder.layout.getMeasuredHeight();
-        totalHeight += height;
-
-        if(position == playlists.size()-1)
-            recyclerView.getLayoutParams().height = totalHeight;
+        if(position == 0){
+            holder.layout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+            int height = holder.layout.getMeasuredHeight();
+            recyclerView.getLayoutParams().height =  height * playlists.size();
+        }
     }
 
     @Override

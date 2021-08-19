@@ -9,12 +9,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
-public class MainViewPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapterMain extends FragmentPagerAdapter {
 
     private ArrayList<Fragment> mListFragment = new ArrayList<>();
     private ArrayList<String> mListTitle = new ArrayList<>();
 
-    public MainViewPagerAdapter(FragmentManager fm) {
+    public ViewPagerAdapterMain(FragmentManager fm) {
         super(fm);
     }
 
