@@ -2,6 +2,7 @@ package com.liem.musicapp.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.liem.musicapp.R;
 import com.liem.musicapp.adapters.PlaylistRecyclerAdapter;
@@ -55,7 +57,7 @@ public class PlaylistFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Playlist>> call, Response<List<Playlist>> response) {
                  playlists = (ArrayList<Playlist>) response.body();
-                 playlistRecyclerAdapter = new PlaylistRecyclerAdapter(getActivity(), playlists);
+                 playlistRecyclerAdapter = new PlaylistRecyclerAdapter(getActivity(), playlists, recyclerView);
                  recyclerView.setAdapter(playlistRecyclerAdapter);
                  recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }
@@ -66,4 +68,5 @@ public class PlaylistFragment extends Fragment {
             }
         });
     }
+
 }
