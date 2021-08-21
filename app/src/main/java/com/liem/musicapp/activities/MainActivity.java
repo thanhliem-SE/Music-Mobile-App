@@ -3,6 +3,7 @@ package com.liem.musicapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -39,6 +40,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.icontrangchu);
         tabLayout.getTabAt(1).setIcon(R.drawable.icontimkiem);
-
+        tabLayout.setBackgroundColor(Color.rgb(177, 177, 177));
     }
 }

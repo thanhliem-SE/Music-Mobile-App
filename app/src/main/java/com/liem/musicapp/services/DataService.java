@@ -1,5 +1,7 @@
 package com.liem.musicapp.services;
 
+import com.liem.musicapp.models.Album;
+import com.liem.musicapp.models.BaiHat;
 import com.liem.musicapp.models.ChuDe;
 import com.liem.musicapp.models.Playlist;
 import com.liem.musicapp.models.QuangCao;
@@ -23,4 +25,10 @@ public interface DataService {
 
     @GET("theloai.php")
     Call<List<TheLoai>> getTheLoai();
+
+    @GET("album.php")
+    Call<List<Album>> getAlbum();
+
+    @GET("bai-hat-ngau-nhien.php")
+    Call<List<BaiHat>> getBaiHatNgauNhien();
 }

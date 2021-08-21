@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.TranngChuFragment"
+    android:background="#B1B1B1"
     android:scrollbars="none"
     android:fillViewport="true">
 
@@ -33,6 +34,18 @@
         <fragment
             android:name="com.liem.musicapp.fragments.TheLoaiFragment"
             android:id="@+id/fmTrangChu_fragmentTheLoai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <fragment
+            android:name="com.liem.musicapp.fragments.AlbumFragment"
+            android:id="@+id/fmTrangChu_fragmentAlbum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <fragment
+            android:name="com.liem.musicapp.fragments.BaiHatNgauNhienFragment"
+            android:id="@+id/fmTrangChu_fragmentBaiHat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

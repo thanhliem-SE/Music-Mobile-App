@@ -3,32 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.TheLoaiFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragments.BaiHatNgauNhienFragment">
 
     <TextView
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="THỂ LOẠI"
+        android:text="Có thể bạn thích"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:gravity="center"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="wrap_content"
+        android:id="@+id/fmBaiHatNgauNhien_recyclerView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fmTheLoai_recyclerView"/>
+        android:nestedScrollingEnabled="false"/>
 
 <!--    <TextView-->
 <!--        android:textColor="#736868"-->
 <!--        android:layout_marginStart="10dp"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:text="Xem thêm Thể loại"-->
+<!--        android:text="Xem thêm bài hát"-->
 <!--        android:drawableStart="@drawable/iconmoreplaylist"-->
 <!--        android:drawablePadding="8dp"-->
 <!--        android:textSize="16sp"-->
 <!--        android:layout_marginTop="10dp"/>-->
+
+
 </LinearLayout>
