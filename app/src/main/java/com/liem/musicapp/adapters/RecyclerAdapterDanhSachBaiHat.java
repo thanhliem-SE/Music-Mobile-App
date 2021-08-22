@@ -60,7 +60,7 @@ public class RecyclerAdapterDanhSachBaiHat extends RecyclerView.Adapter<Recycler
             imgLove = itemView.findViewById(R.id.itemDanhSachBaiHat_icLove);
             txtBaiHat = itemView.findViewById(R.id.itemDanhSachBaiHat_txtBaiHat);
             txtIndex = itemView.findViewById(R.id.itemDanhSachBaiHat_indexBaiHat);
-            txtCaSi = itemView.findViewById(R.id.itemBaiHatNgauNhien_txtCaSi);
+            txtCaSi = itemView.findViewById(R.id.itemDanhSachBaiHat_txtCaSi);
         }
     }
 }

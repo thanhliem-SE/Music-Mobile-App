@@ -23,8 +23,11 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.liem.musicapp.R;
 import com.liem.musicapp.adapters.RecyclerAdapterDanhSachBaiHat;
+import com.liem.musicapp.models.Album;
 import com.liem.musicapp.models.BaiHat;
+import com.liem.musicapp.models.Playlist;
 import com.liem.musicapp.models.QuangCao;
+import com.liem.musicapp.models.TheLoai;
 import com.liem.musicapp.services.ApiService;
 import com.liem.musicapp.services.DataService;
 import com.squareup.picasso.Picasso;
@@ -48,7 +51,11 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton floatingActionButton;
     ImageView imgDanhSachBaiHat;
+
     QuangCao quangCao;
+    Album album;
+    Playlist playlist;
+    TheLoai theLoai;
 
     ArrayList<BaiHat> baiHatArrayList;
     RecyclerAdapterDanhSachBaiHat recyclerAdapterDanhSachBaiHat;
@@ -65,7 +72,73 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
         if (quangCao != null && quangCao.getIdBaiHat() != null) {
             getValuesInView(quangCao.getTenBaiHat(), quangCao.getHinhAnhBaiHat());
             getDataQuangCao(quangCao.getIdBaiHat());
+        } else if (album != null && album.getIdAlbum() != null) {
+            getValuesInView(album.getTenAlbum(), album.getHinhAnhAlbum());
+            getDataAlbum(album.getIdAlbum());
+        } else if (playlist != null && playlist.getIdPlaylist() != null) {
+            getValuesInView(playlist.getTen(), playlist.getHinhIcon());
+            getDataPlaylist(playlist.getIdPlaylist());
+        } else if (theLoai != null && theLoai.getIdTheLoai() != null) {
+            getValuesInView(theLoai.getTenTheLoai(), theLoai.getHinhTheLoai());
+            getDataTheLoai(theLoai.getIdTheLoai());
         }
+    }
+
+    private void getDataAlbum(String idAlbum) {
+        DataService dataService = ApiService.getService();
+        Call<List<BaiHat>> callback = dataService.getBaiHatTheoIdAlbum(idAlbum);
+        callback.enqueue(new Callback<List<BaiHat>>() {
+            @Override
+            public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
+                baiHatArrayList = (ArrayList<BaiHat>) response.body();
+                recyclerAdapterDanhSachBaiHat = new RecyclerAdapterDanhSachBaiHat(DanhSachBaiHatActivity.this, baiHatArrayList);
+                recyclerView.setAdapter(recyclerAdapterDanhSachBaiHat);
+                recyclerView.setLayoutManager(new LinearLayoutManager(DanhSachBaiHatActivity.this));
+            }
+
+            @Override
+            public void onFailure(Call<List<BaiHat>> call, Throwable t) {
+                Log.d("tag", "Load data danhsachbaihat fail");
+            }
+        });
+    }
+
+    private void getDataPlaylist(String idPlaylist) {
+        DataService dataService = ApiService.getService();
+        Call<List<BaiHat>> callback = dataService.getBaiHatTheoIdPlaylist(idPlaylist);
+        callback.enqueue(new Callback<List<BaiHat>>() {
+            @Override
+            public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
+                baiHatArrayList = (ArrayList<BaiHat>) response.body();
+                recyclerAdapterDanhSachBaiHat = new RecyclerAdapterDanhSachBaiHat(DanhSachBaiHatActivity.this, baiHatArrayList);
+                recyclerView.setAdapter(recyclerAdapterDanhSachBaiHat);
+                recyclerView.setLayoutManager(new LinearLayoutManager(DanhSachBaiHatActivity.this));
+            }
+
+            @Override
+            public void onFailure(Call<List<BaiHat>> call, Throwable t) {
+                Log.d("tag", "Load data danhsachbaihat fail");
+            }
+        });
+    }
+
+    private void getDataTheLoai(String idTheLoai) {
+        DataService dataService = ApiService.getService();
+        Call<List<BaiHat>> callback = dataService.getBaiHatTheoIdTheLoai(idTheLoai);
+        callback.enqueue(new Callback<List<BaiHat>>() {
+            @Override
+            public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
+                baiHatArrayList = (ArrayList<BaiHat>) response.body();
+                recyclerAdapterDanhSachBaiHat = new RecyclerAdapterDanhSachBaiHat(DanhSachBaiHatActivity.this, baiHatArrayList);
+                recyclerView.setAdapter(recyclerAdapterDanhSachBaiHat);
+                recyclerView.setLayoutManager(new LinearLayoutManager(DanhSachBaiHatActivity.this));
+            }
+
+            @Override
+            public void onFailure(Call<List<BaiHat>> call, Throwable t) {
+                Log.d("tag", "Load data danhsachbaihat fail");
+            }
+        });
     }
 
     private void getDataQuangCao(String idBaiHat) {
@@ -82,7 +155,7 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<BaiHat>> call, Throwable t) {
-               Log.d("tag", "Load data danhsachbaihat fail");
+                Log.d("tag", "Load data danhsachbaihat fail");
             }
         });
     }
@@ -134,7 +207,12 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.hasExtra("banners")) {
             quangCao = (QuangCao) intent.getSerializableExtra("banners");
+        } else if (intent.hasExtra("album")) {
+            album = (Album) intent.getSerializableExtra("album");
+        } else if (intent.hasExtra("theLoai")) {
+            theLoai = (TheLoai) intent.getSerializableExtra("theLoai");
+        } else if (intent.hasExtra("playlist")) {
+            playlist = (Playlist) intent.getSerializableExtra("playlist");
         }
-
     }
 }

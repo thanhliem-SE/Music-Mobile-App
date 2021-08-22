@@ -4,7 +4,9 @@ package com.liem.musicapp.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BaiHat {
+import java.io.Serializable;
+
+public class BaiHat implements Serializable {
 
     @SerializedName("IdBaiHat")
     @Expose

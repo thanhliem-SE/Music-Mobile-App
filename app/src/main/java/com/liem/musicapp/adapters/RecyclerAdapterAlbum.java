@@ -1,6 +1,7 @@
 package com.liem.musicapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.liem.musicapp.R;
+import com.liem.musicapp.activities.DanhSachBaiHatActivity;
 import com.liem.musicapp.models.Album;
 import com.squareup.picasso.Picasso;
 
@@ -41,6 +43,14 @@ public class RecyclerAdapterAlbum extends RecyclerView.Adapter<RecyclerAdapterAl
         holder.txtCaSi.setText(album.getTenCaSi());
         holder.txtAlbum.setText(album.getTenAlbum());
         Picasso.get().load(album.getHinhAnhAlbum()).into(holder.imgAlbum);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DanhSachBaiHatActivity.class);
+                intent.putExtra("album", album);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
