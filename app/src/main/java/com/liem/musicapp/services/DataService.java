@@ -10,7 +10,10 @@ import com.liem.musicapp.models.TheLoai;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public interface DataService {
 
@@ -31,4 +34,8 @@ public interface DataService {
 
     @GET("bai-hat-ngau-nhien.php")
     Call<List<BaiHat>> getBaiHatNgauNhien();
+
+    @FormUrlEncoded
+    @POST("danh-sach-bai-hat.php")
+    Call<List<BaiHat>> getBaiHatTheoId(@Field("idBaiHat") String idBaiHat);
 }

@@ -2,60 +2,64 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activityDanhsachbaihat_coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".activities.DanhSachBaiHatActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/activityDanhsachbaihat_appbarlayout"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:id="@+id/activityDanhsachbaihat_appbarlayout">
+        android:layout_height="300dp">
+
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/activityDanhsachbaihat_collapsingtoolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/activityDanhsachbaihat_collapsingtoolbar"
             android:fitsSystemWindows="true"
             app:expandedTitleGravity="center|bottom"
             app:expandedTitleMarginBottom="33dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/activityDanhsachbaihat_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:elevation="6dp"
-                android:id="@+id/activityDanhsachbaihat_toolbar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:layout_collapseMode="pin"/>
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
             <ImageView
+                android:id="@+id/activityDanhsachbaihat_imgDanhSachCaKhuc"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:scaleType="fitXY"
-                android:elevation="6dp"
-                android:background="@color/black"
                 android:layout_gravity="center"
-                android:id="@+id/activityDanhsachbaihat_imgDanhSachCaKhuc"/>
+                android:background="@color/black"
+                android:elevation="6dp"
+                android:scaleType="fitXY" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/activityDanhsachbaihat_floatingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#D84315"
         android:src="@drawable/iconfloatingactionbutton"
-        android:backgroundTint="#a845de"
-        app:layout_anchorGravity="bottom|center"
         app:layout_anchor="@id/activityDanhsachbaihat_appbarlayout"
-        app:layout_behavior="@string/bottom_sheet_behavior"
-        android:id="@+id/activityDanhsachbaihat_floatingButton"/>
-    
+        app:layout_anchorGravity="bottom|center"
+        app:layout_behavior="@string/bottom_sheet_behavior" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="30dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activityDanhsachbaihat_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/activityDanhsachbaihat_recyclerView"/>
+            android:layout_height="wrap_content" />
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
