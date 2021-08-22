@@ -3,35 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragments.PlaylistFragment"
+    android:layout_gravity="center"
     android:orientation="vertical"
-    android:layout_gravity="center">
+    tools:context=".fragments.PlaylistFragment">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:padding="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="NHỊP ĐIỆU CẢM XÚC"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:textColor="@color/black"
-        android:gravity="center"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fmPlaylist_recyclerView"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="false"/>
+        android:layout_height="wrap_content">
 
-<!--    <TextView-->
-<!--        android:textColor="#736868"-->
-<!--        android:layout_marginStart="10dp"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Xem thêm Playlist"-->
-<!--        android:drawableStart="@drawable/iconmoreplaylist"-->
-<!--        android:drawablePadding="8dp"-->
-<!--        android:textSize="16sp"-->
-<!--        android:layout_marginTop="10dp"/>-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fmPlaylist_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!--    <TextView-->
+    <!--        android:textColor="#736868"-->
+    <!--        android:layout_marginStart="10dp"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Xem thêm Playlist"-->
+    <!--        android:drawableStart="@drawable/iconmoreplaylist"-->
+    <!--        android:drawablePadding="8dp"-->
+    <!--        android:textSize="16sp"-->
+    <!--        android:layout_marginTop="10dp"/>-->
 
 </LinearLayout>

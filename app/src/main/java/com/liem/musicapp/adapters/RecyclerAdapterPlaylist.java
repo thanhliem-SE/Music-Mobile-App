@@ -47,11 +47,6 @@ public class RecyclerAdapterPlaylist extends RecyclerView.Adapter<RecyclerAdapte
         Picasso.get().load(playlist.getHinhIcon()).into(holder.imgIcon);
         holder.txtPlaylist.setText(playlist.getTen());
 
-        if(position == 0){
-            holder.layout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-            int height = holder.layout.getMeasuredHeight();
-            recyclerView.getLayoutParams().height =  height * playlists.size();
-        }
     }
 
     @Override

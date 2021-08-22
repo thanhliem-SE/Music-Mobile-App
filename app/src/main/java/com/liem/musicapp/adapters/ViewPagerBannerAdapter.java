@@ -1,6 +1,7 @@
 package com.liem.musicapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.liem.musicapp.R;
+import com.liem.musicapp.activities.DanhSachBaiHatActivity;
 import com.liem.musicapp.models.QuangCao;
 import com.squareup.picasso.Picasso;
 
@@ -56,6 +58,15 @@ public class ViewPagerBannerAdapter extends PagerAdapter {
         txtContent.setText(mListQuangCao.get(position).getNoiDung());
 
         container.addView(view);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, DanhSachBaiHatActivity.class);
+                intent.putExtra("banners", mListQuangCao.get(position));
+                mContext.startActivity(intent);
+            }
+        });
 
         return view;
     }
