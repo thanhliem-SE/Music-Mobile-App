@@ -1,6 +1,7 @@
 package com.liem.musicapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.liem.musicapp.R;
+import com.liem.musicapp.activities.PlayNhacActivity;
 import com.liem.musicapp.models.BaiHat;
 import com.squareup.picasso.Picasso;
 
@@ -45,6 +47,17 @@ public class RecyclerAdapterDanhSachBaiHat extends RecyclerView.Adapter<Recycler
             public void onClick(View v) {
             }
         });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PlayNhacActivity.class);
+                intent.putExtra("baiHat", baiHat);
+                intent.putExtra("listBaiHat", baiHatArrayList);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override

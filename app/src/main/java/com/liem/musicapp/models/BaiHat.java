@@ -1,12 +1,15 @@
 
 package com.liem.musicapp.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class BaiHat implements Serializable {
+public class BaiHat implements Parcelable{
 
     @SerializedName("IdBaiHat")
     @Expose
@@ -33,9 +36,30 @@ public class BaiHat implements Serializable {
     @Expose
     private String linkBaiHat;
 
-    public String getIdBaiHat() {
-        return idBaiHat;
+    protected BaiHat(Parcel in) {
+        idBaiHat = in.readString();
+        idAlbum = in.readString();
+        idPlaylist = in.readString();
+        idTheLoai = in.readString();
+        tenBaiHat = in.readString();
+        tenCaSi = in.readString();
+        hinhAnhBaiHat = in.readString();
+        linkBaiHat = in.readString();
     }
+
+    public static final Creator<BaiHat> CREATOR = new Creator<BaiHat>() {
+        @Override
+        public BaiHat createFromParcel(Parcel in) {
+            return new BaiHat(in);
+        }
+
+        @Override
+        public BaiHat[] newArray(int size) {
+            return new BaiHat[size];
+        }
+    };
+
+
 
     public void setIdBaiHat(String idBaiHat) {
         this.idBaiHat = idBaiHat;
@@ -97,4 +121,20 @@ public class BaiHat implements Serializable {
         this.linkBaiHat = linkBaiHat;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(idBaiHat);
+        dest.writeString(idAlbum);
+        dest.writeString(idPlaylist);
+        dest.writeString(idTheLoai);
+        dest.writeString(tenBaiHat);
+        dest.writeString(tenCaSi);
+        dest.writeString(linkBaiHat);
+        dest.writeString(hinhAnhBaiHat);
+    }
 }

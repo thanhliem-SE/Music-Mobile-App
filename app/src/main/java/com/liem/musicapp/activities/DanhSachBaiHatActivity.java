@@ -82,6 +82,7 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
             getValuesInView(theLoai.getTenTheLoai(), theLoai.getHinhTheLoai());
             getDataTheLoai(theLoai.getIdTheLoai());
         }
+
     }
 
     private void getDataAlbum(String idAlbum) {

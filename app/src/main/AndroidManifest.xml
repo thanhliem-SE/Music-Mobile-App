@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/ic_label_app"
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicApp">
-        <activity android:name=".activities.DanhSachBaiHatActivity"></activity>
+        <activity android:name=".activities.PlayNhacActivity"></activity>
+        <activity android:name=".activities.DanhSachBaiHatActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
