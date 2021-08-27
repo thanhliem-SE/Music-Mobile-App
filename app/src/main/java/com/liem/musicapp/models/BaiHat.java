@@ -134,7 +134,21 @@ public class BaiHat implements Parcelable{
         dest.writeString(idTheLoai);
         dest.writeString(tenBaiHat);
         dest.writeString(tenCaSi);
-        dest.writeString(linkBaiHat);
         dest.writeString(hinhAnhBaiHat);
+        dest.writeString(linkBaiHat);
+    }
+
+    @Override
+    public String toString() {
+        return "BaiHat{" +
+                "idBaiHat='" + idBaiHat + '\'' +
+                ", idAlbum='" + idAlbum + '\'' +
+                ", idPlaylist='" + idPlaylist + '\'' +
+                ", idTheLoai='" + idTheLoai + '\'' +
+                ", tenBaiHat='" + tenBaiHat + '\'' +
+                ", tenCaSi='" + tenCaSi + '\'' +
+                ", hinhAnhBaiHat='" + hinhAnhBaiHat + '\'' +
+                ", linkBaiHat='" + linkBaiHat + '\'' +
+                '}';
     }
 }
