@@ -71,19 +71,6 @@ public class PlayNhacActivity extends AppCompatActivity {
 
     private void eventClick() {
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (viewPagerAdapterPlayNhac.getItem(1) != null) {
-                    if (baiHat != null) {
-                        diaNhacFragment.setImgDiaNhac(baiHat.getHinhAnhBaiHat());
-                        handler.removeCallbacks(this);
-                    } else {
-                        handler.postDelayed(this, 200);
-                    }
-                }
-            }
-        }, 200);
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,31 +180,47 @@ public class PlayNhacActivity extends AppCompatActivity {
         }, 500);
     }
 
+    private void setImgDiaNhac(String hinhanh) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    diaNhacFragment.setImgDiaNhac(hinhanh);
+                    handler.removeCallbacks(this);
+                } catch (Exception e) {
+                    handler.postDelayed(this, 500);
+                }
+            }
+        }, 500);
+    }
+
     private void nextBaiHat() {
         if (!repeat) {
             if (!shuffle) {
                 if (positon < baiHatArrayList.size() - 1) {
                     mediaPlayer.stop();
-                    baiHat = baiHatArrayList.get(++positon);
-                    init();
+                    positon++;
+                    baiHat = baiHatArrayList.get(positon);
+                    customView();
                 } else {
                     mediaPlayer.stop();
                     positon = 0;
                     baiHat = baiHatArrayList.get(0);
-                    init();
+                    customView();
                 }
             } else {
                 Random ran = new Random();
                 int positon = ran.nextInt(baiHatArrayList.size());
-                if (positon < (baiHatArrayList.size() - 1)) {
+                if (positon < (baiHatArrayList.size() - 1) && positon >= 0) {
                     mediaPlayer.stop();
                     baiHat = baiHatArrayList.get(positon);
-                    init();
+                    customView();
                 }
             }
         } else {
             mediaPlayer.stop();
-            init();
+            customView();
         }
     }
 
@@ -250,18 +253,27 @@ public class PlayNhacActivity extends AppCompatActivity {
         });
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.drawable.ic_back_left_arrow);
-        playDanhSachBaiHatFragment = new PlayDanhSachBaiHatFragment(baiHatArrayList);
 
+        playDanhSachBaiHatFragment = new PlayDanhSachBaiHatFragment(baiHatArrayList);
         diaNhacFragment = new DiaNhacFragment();
+
         viewPagerAdapterPlayNhac = new ViewPagerAdapterPlayNhac(getSupportFragmentManager());
         viewPagerAdapterPlayNhac.addFragment(playDanhSachBaiHatFragment);
         viewPagerAdapterPlayNhac.addFragment(diaNhacFragment);
         viewPager.setAdapter(viewPagerAdapterPlayNhac);
 
-        if (baiHat.getTenBaiHat() != null) {
+        customView();
+
+    }
+
+    private void customView() {
+        if (baiHat.getTenBaiHat() != null && baiHat.getHinhAnhBaiHat() != null) {
             getSupportActionBar().setTitle(baiHat.getTenBaiHat());
             new PlayMp3().execute(baiHat.getLinkBaiHat());
             btnPlay.setImageResource(R.drawable.iconpause);
+
+            diaNhacFragment = (DiaNhacFragment) viewPagerAdapterPlayNhac.getItem(1);
+            setImgDiaNhac(baiHat.getHinhAnhBaiHat());
         }
     }
 
@@ -273,6 +285,7 @@ public class PlayNhacActivity extends AppCompatActivity {
                 baiHat = (BaiHat) intent.getParcelableExtra("baiHat");
                 baiHatArrayList = intent.getParcelableArrayListExtra("listBaiHat");
                 positon = baiHatArrayList.indexOf(baiHat);
+                Log.d("tag", baiHatArrayList.get(1).getHinhAnhBaiHat());
             } else if (intent.hasExtra("baiHat")) {
                 baiHat = (BaiHat) intent.getParcelableExtra("baiHat");
                 baiHatArrayList = new ArrayList<>();
