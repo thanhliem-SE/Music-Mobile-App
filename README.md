@@ -22,7 +22,7 @@ https://user-images.githubusercontent.com/62129407/132519464-5f12cd29-b6a2-4286-
 
 
 ## APK
-https://github.com/thanhliem-SE/Music-Mobile-App/blob/main/app/release/app-release.apk
+
 
 ## Contribution
 Nếu bạn gặp bất cứ vấn đề nào trong khi sử dụng ứng dụng hãy phản hồi với tôi. Mọi sự đóng góp, phản hồi của các bán sẽ là nguồn tài liệu quý giá nhất giúp chúng tôi trong quá trình xây dụng phần mềm. <br>
